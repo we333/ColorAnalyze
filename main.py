@@ -93,8 +93,12 @@ def analyze_color(hist):
 
     return color, percent
 
+def read_image(file):
+    frame = cv2.imread(file)
+    return frame
+
 def run():
-    frame = cv2.imread('./hat/hat_0.jpeg')
+    frame = read_image('./hat/hat_1.jpeg')
     cv2.imshow('frame', frame)
 
 ## 抽取目标对象的局部图像

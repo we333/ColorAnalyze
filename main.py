@@ -8,10 +8,12 @@ import numpy as np
 import cv2
 import math
 import colorsys
-import heapq
+
 import random
 import os
- 
+
+import top_k_heap
+
 #def hsv2rgb(h,s,v):
 #    return tuple(int(i * 255) for i in colorsys.hsv_to_rgb(h,s,v))
 #
@@ -26,43 +28,7 @@ import os
 #    if i == 4: return (t, p, v)
 #    if i == 5: return (v, p, q)
 
-class TopkHeap(object):
-    def __init__(self, k):
-        self.k = k
-        self.data = []
- 
-    def Push(self, elem):
-        if len(self.data) < self.k:
-            heapq.heappush(self.data, elem)
-        else:
-            topk_small = self.data[0]
-            if elem > topk_small:
-                heapq.heapreplace(self.data, elem)
- 
-    def TopK(self):
-        return [x for x in reversed([heapq.heappop(self.data) for x in xrange(len(self.data))])]
 
-def find_exist_color_topK(hist, bin_count,top_k):
-    tk = TopkHeap(top_k)
-    for i in xrange(bin_count):
-        tk.Push(hist[i])
-    return tk.TopK()
-
-def find_exist_color_thresh(hist,bin_count,thresh):
-    ret = []
-    for i in xrange(bin_count):
-        if hist[i] >= thresh:
-            ret.append(hist[i])
-    return ret
-
-## 计算color的各个颜色所占比重，并返回比重结果的百分值(1~99)
-def calc_color_percent(color, pixel):
-    percent = []
-
-    total_count = sum(pixel)
-    for i in range(len(color)): 
-        percent.append(int(pixel[i]/total_count*100))
-    return percent
 
 
 
@@ -92,27 +58,33 @@ def run():
 class color_analyzer(object):
     def __init__(self, path):
         self.color_num = 16     # hsv空间所能分辨的颜色种类
+        self.bin_thresh = 10    # 统计时每张图中，某一颜色的bin_count少于多少时被忽略
 
         self.path = path
-        self.files = []
         self.images = []
-        self.color = []
-        self.percent = []
+        self.color = {}
 
-    def _read_file(self):
-        if os.path.isdir(self.path):
-            for _,_,f in os.walk(self.path):
-                for name in f:   
-                    self.files.append(self.path + name)
-        elif os.path.isfile(self.path):
-            self.files.append(self.path)
-        else:
-            print ('special file')
-            return
+    def _find_exist_color_topK(self, hist, bin_count,top_k):
+        tk = top_k_heap(top_k)
+        for i in xrange(bin_count):
+            tk.push(hist[i])
+        return tk.TopK()
 
-    def _get_image(self):
-        for i in self.files:
-            self.images.append(cv2.imread(i))
+    def _find_exist_color_thresh(self, hist,bin_count,thresh):
+        ret = []
+        for i in xrange(bin_count):
+            if hist[i] >= thresh:
+                ret.append(hist[i])
+        return ret
+
+    ## 计算color的各个颜色所占比重，并返回比重结果的百分值(1~99)
+    def _calc_color_percent(self, color, pixel):
+        percent = []
+
+        total_count = sum(pixel)
+        for i in range(len(color)): 
+            percent.append(int(pixel[i]/total_count*100))
+        return percent
 
     def _analyze_color(self, hist):
     ## 绘制颜色直方图
@@ -127,7 +99,7 @@ class color_analyzer(object):
         
     ############## 找出最大的几个颜色的rgb以及比例 ##############
     ## 先抽取hist中出现最多的几个bin
-        exist_color = find_exist_color_thresh(hist, bin_count, 2)
+        exist_color = self._find_exist_color_thresh(hist, bin_count, self.bin_thresh)
 
     ## 找到着几个bin对应的hist的位置，获取对应的颜色
         list_hist = list(hist)
@@ -139,11 +111,11 @@ class color_analyzer(object):
             color.append(img[255-int(list_hist[idx]), bin_w*idx+2]) # img[y,x]
 
     ## 计算bin中各个颜色所占比例
-        percent = calc_color_percent(color, hist[color_index])
+        percent = self._calc_color_percent(color, hist[color_index])
 
         return color, percent
 
-    def _extract_object(self, image):
+    def _extract_object_area(self, image):
         ## 抽取目标对象的局部图像
         thresh = cv2.threshold(cv2.cvtColor(image.copy(), cv2.COLOR_BGR2GRAY) , 200, 255, cv2.THRESH_BINARY_INV)[1]
         es = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,3))
@@ -153,7 +125,7 @@ class color_analyzer(object):
         return image,mask
 
     def _calc_color(self, image):   
-        image,mask = self._extract_object(image)
+        image,mask = self._extract_object_area(image)
         
         ## 计算hsv空间的直方图
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -163,21 +135,40 @@ class color_analyzer(object):
         ## 从直方图中计算颜色比例
         return self._analyze_color(hist.reshape(-1))
 
-    def run(self):
-        self._read_file()
-        self._get_image()
+    def _load_image(self):
+        files = []
+        if os.path.isdir(self.path):
+            for _,_,f in os.walk(self.path):
+                for name in f:   
+                    files.append(self.path + name)
+        elif os.path.isfile(self.path):
+            files.append(self.path)
+        else:
+            print ('special fd')
+            return
+
+        for i in files:
+            self.images.append(cv2.imread(i))
+
+    def _count_color(self):
         for i in self.images:
             color, percent = self._calc_color(i)
-            self.color.append(color)
-            self.percent.append(percent)
+            for j in range(len(color)):
+                tmp = tuple(color[j])
+                if self.color.has_key(tmp):
+                    self.color[tmp] = self.color[tmp] + percent[j]
+                else:
+                    self.color[tmp] = percent[j]
 
-        for i in range(len(self.color)):
-            for j in range(len(self.color[i])):
-                print ('color %s = %d'%(self.color[i][j], self.percent[i][j]))
+    def run(self):
+        self._load_image()
+        self._count_color()
 
-        cv2.waitKey()
+        print ('there are %d images'%len(self.images))
+
+        for k,v in self.color.items():
+            print ('%s = %d%%'%(k,v/len(self.images)))
 
 op = color_analyzer('./test/')
 op.run()
-
 cv2.destroyAllWindows()

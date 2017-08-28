@@ -1,11 +1,13 @@
-from color_analyzer import analyzer
+import cv2
+import color_analyzer
 
-op = analyzer('./hat--old/')
+op = color_analyzer.analyzer('./test/', 50, 10)
 op.run()
 
-print ('there are %d images'%len(op.images))
+print ('there are %d images'%op.file_num)
 
 for k,v in op.color.items():
-    print ('%s = %d%%'%(k,v/len(op.images)))
+    print ('%s = %d%%'%(k,v/op.file_num))
 
+cv2.waitKey()
 cv2.destroyAllWindows()

@@ -1,10 +1,8 @@
 # -- coding: utf-8 --
 
+import os
 import numpy as np
 import cv2
-
-import os
-
 import heap
 
 class analyzer(object):
@@ -54,7 +52,7 @@ class analyzer(object):
 
     ############## 找出最大的几个颜色的rgb以及比例 ##############
     ## 先抽取hist中出现最多的几个bin
-        exist_color = self._find_exist_color_top_k(hist, 3)
+        exist_color = self._find_exist_color_top_k(hist, 5)
 
     ## 找到着几个bin对应的hist的位置，获取对应的颜色
         list_hist = list(hist)
@@ -105,7 +103,7 @@ class analyzer(object):
 
         for i in files:
             tmp1,tmp2 = None, None
-            cnt1,cnt2 = 100
+            cnt1,cnt2 = 50,50
             if 'BLACK' in i or 'Black' in i:
                 tmp1 = tuple((0,0,0))
             elif 'WHITE' in i or 'White' in i:
@@ -115,21 +113,22 @@ class analyzer(object):
             elif 'PANDA' in i or 'Panda' in i:
                 tmp1 = tuple((0,0,0))
                 tmp2 = tuple((250,250,250))
-                cnt1 = cnt2 = 50
+                cnt1 = cnt2 = 25
             else:
                 pass
 
             # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
-            if tmp1 is not None or tmp2 is not None:
+            if tmp1 is not None:
                 if self.color.has_key(tmp1):
                     self.color[tmp1] = self.color[tmp1] + cnt1
                 else:
                     self.color[tmp1] = cnt1
 
-                if self.color.has_key(tmp2):
-                    self.color[tmp2] = self.color[tmp2] + cnt2
-                else:
-                    self.color[tmp2] = cnt2
+                if tmp2 is not None:
+                    if self.color.has_key(tmp2):
+                        self.color[tmp2] = self.color[tmp2] + cnt2
+                    else:
+                        self.color[tmp2] = cnt2
             # 如果颜色可分辨，则之后再分析颜色
             else:
                 self.images.append(cv2.imread(i))

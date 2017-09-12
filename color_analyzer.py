@@ -16,6 +16,10 @@ class analyzer(object):
         self.images = []
         self.color = {}
 
+        ## 可能图片名中既有white也有green，导致图片没有被分析直接定义为white
+        ## 所以在有如下颜色时，需要分析图片
+        self.enable_calc_color = ['GREEN', 'RED', 'BLUE', 'YELLOW', 'ORANGE', 'NAVY', 'PURPLE', 'YELLOW', 'CORAL']
+
     def _find_exist_color_top_k(self, hist ,top_k):
         tk = heap.top_k_heap(top_k)
         for i in xrange(self.bin_num):
@@ -62,9 +66,16 @@ class analyzer(object):
             color_index.append(idx)
             # img[y,x] 获取像素值时，下标[0]是img中的y坐标，下标[1]是img中的x坐标
             color.append(img[255-int(list_hist[idx]), self.bin_w*idx+2]) # img[y,x]
-
     ## 计算bin中各个颜色所占比例
         percent = self._calc_color_percent(color, hist[color_index])
+
+    ## 默认的rgb顺序是反的，所以需要反转一下color数据
+        for i in range(len(color)):
+            tmp = color[i]
+            first = tmp[0]
+            last = tmp[-1]
+            color[i][0] = last
+            color[i][-1] = first
 
         return color, percent
 
@@ -104,33 +115,46 @@ class analyzer(object):
         for i in files:
             tmp1,tmp2 = None, None
             cnt1,cnt2 = 50,50
-            if 'BLACK' in i or 'Black' in i:
-                tmp1 = tuple((0,0,0))
-            elif 'WHITE' in i or 'White' in i:
-                tmp1 = tuple((250,250,250))
-            elif 'GRAY'in i or 'Gray' in i:
-                tmp1 = tuple((192,192,192))
-            elif 'PANDA' in i or 'Panda' in i:
-                tmp1 = tuple((0,0,0))
-                tmp2 = tuple((250,250,250))
-                cnt1 = cnt2 = 25
-            else:
-                pass
+            upper_str = i.upper()
 
-            # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
-            if tmp1 is not None:
-                if self.color.has_key(tmp1):
-                    self.color[tmp1] = self.color[tmp1] + cnt1
+            enable_calc = False
+            for j in self.enable_calc_color:
+                if j in upper_str:
+                    enable_calc = True
+
+            if enable_calc == False:
+                if 'PANDA' in upper_str or ('BLACK' in upper_str and 'WHITE' in upper_str):
+                    tmp1 = tuple((0,0,0))
+                    tmp2 = tuple((250,250,250))
+                    cnt1 = cnt2 = 25
+                    print ('panda')
+                elif 'BLACK' in upper_str or 'ブラック' in upper_str:
+                    tmp1 = tuple((0,0,0))
+                    print ('black')
+                elif 'WHITE' in upper_str:
+                    tmp1 = tuple((250,250,250))
+                    print ('white')
+                elif 'GRAY'in upper_str:
+                    tmp1 = tuple((192,192,192))
+                    print ('gray')
                 else:
-                    self.color[tmp1] = cnt1
+                    pass
 
-                if tmp2 is not None:
-                    if self.color.has_key(tmp2):
-                        self.color[tmp2] = self.color[tmp2] + cnt2
+                # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
+                if tmp1 is not None:
+                    if self.color.has_key(tmp1):
+                        self.color[tmp1] = self.color[tmp1] + cnt1
                     else:
-                        self.color[tmp2] = cnt2
-            # 如果颜色可分辨，则之后再分析颜色
+                        self.color[tmp1] = cnt1
+
+                    if tmp2 is not None:
+                        if self.color.has_key(tmp2):
+                            self.color[tmp2] = self.color[tmp2] + cnt2
+                        else:
+                            self.color[tmp2] = cnt2
+            
             else:
+                # 如果颜色可分辨，则之后再分析颜色
                 self.images.append(cv2.imread(i))
 
     def _count_color(self):
@@ -148,4 +172,3 @@ class analyzer(object):
         self._count_color()
 
  
-

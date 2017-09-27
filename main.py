@@ -10,20 +10,8 @@ import math
 import colorsys
 import heapq
 import random
- 
-#def hsv2rgb(h,s,v):
-#    return tuple(int(i * 255) for i in colorsys.hsv_to_rgb(h,s,v))
-#
-#def hsv_to_rgb(h, s, v):
-#    if s == 0.0: return (v, v, v)
-#    i = int(h*6.) # XXX assume int() truncates!
-#    f = (h*6.)-i; p,q,t = v*(1.-s), v*(1.-s*f), v*(1.-s*(1.-f)); i%=6
-#    if i == 0: return (v, t, p)
-#    if i == 1: return (q, v, p)
-#    if i == 2: return (p, v, t)
-#    if i == 3: return (p, q, v)
-#    if i == 4: return (t, p, v)
-#    if i == 5: return (v, p, q)
+
+from image_segment import *
 
 class TopkHeap(object):
     def __init__(self, k):
@@ -93,25 +81,30 @@ def analyze_color(hist):
 
     return color, percent
 
-def run():
-    frame = cv2.imread('./hat/hat_0.jpeg')
-    cv2.imshow('frame', frame)
+def run(file):
+    img = cv2.imread(file)
+#    
 
 ## 抽取目标对象的局部图像
-    thresh = cv2.threshold(cv2.cvtColor(frame.copy(), cv2.COLOR_BGR2GRAY) , 100, 255, cv2.THRESH_BINARY_INV)[1]
+    thresh = cv2.threshold(cv2.cvtColor(img.copy(), cv2.COLOR_BGR2GRAY) , 200, 255, cv2.THRESH_BINARY_INV)[1]
     es = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,3))
-    mask = cv2.dilate(thresh,es,iterations = 4)
-    res = cv2.bitwise_and(frame,frame, mask = mask)
+    mask = cv2.dilate(thresh,es,iterations = 5)
+    res = cv2.bitwise_and(img,img, mask = mask)
     hsv = cv2.cvtColor(res, cv2.COLOR_BGR2HSV)
-    cv2.imshow('frame', res)
+    cv2.imshow('img', res)
+
+#    grab = grab_cut(file)
+#    cv2.imshow('grab', grab)
+#    hsv = cv2.cvtColor(grab, cv2.COLOR_BGR2HSV)
 
 ## 分析局部图像的颜色比例
-    hist = cv2.calcHist( [hsv], [0], mask, [10], [0, 180] )
+    hist = cv2.calcHist( [hsv], [0], mask, [20], [0, 180] )
     cv2.normalize(hist, hist, 0, 255, cv2.NORM_MINMAX)
     color, percent = analyze_color(hist.reshape(-1))
     print (color)
     print (percent)
 
-run()
-cv2.waitKey()
-cv2.destroyAllWindows()
+if __name__ == '__main__':
+    run('./hat/hat_36.jpeg')
+    cv2.waitKey()
+    cv2.destroyAllWindows()

@@ -2,8 +2,10 @@
 
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 import cv2
 import heap
+import utils
 
 class analyzer(object):
     def __init__(self, path, bin_num = 10, bin_thresh = 10):
@@ -163,8 +165,24 @@ class analyzer(object):
                 else:
                     self.color[tmp] = percent[j]
 
+    def _show_plot(self):
+        colors = []
+        occupy = []
+
+        for k,v in self.color.items():
+        #   print ('%s = %d'%(k, float(v)/obj.file_num))
+            c = utils.rgb2hex(k)
+            colors.append(c)
+            occupy.append(v)
+            #cv2.waitKey()
+            #cv2.destroyAllWindows()
+
+        plt.bar(range(len(occupy)), occupy, color=list(colors))
+        plt.show()
+
     def run(self):
         self._load_image()
         self._count_color()
+        self._show_plot()
 
  

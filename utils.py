@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 
 def hex2rgb(hexcolor):
 	rgb = [(hexcolor >> 16) & 0xff,
@@ -22,17 +21,17 @@ def rgb2hex(rgbcolor):
 
 	return res 
 
-class plot(object):
-	def __init__(self,color):
-		self.color = color
-		self.colors = []
-		self.occupy = []
+def plot(obj):
+	colors = []
+	occupy = []
 
-	def show(self):
-		for k,v in self.color.items():
-			c = rgb2hex(k)
-	    	self.colors.append(c)
-	    	self.occupy.append(v)
+	for k,v in obj.color.items():
+	#	print ('%s = %d'%(k, float(v)/obj.file_num))
+		c = rgb2hex(k)
+		colors.append(c)
+		occupy.append(v)
+		#cv2.waitKey()
+		#cv2.destroyAllWindows()
 
-		plt.bar(range(len(self.occupy)), self.occupy, color=list(self.colors))
-		plt.show()
+	plt.bar(range(len(occupy)), occupy, color=list(colors))
+	plt.show()

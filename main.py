@@ -1,29 +1,19 @@
+# -- coding: utf-8 --
 import cv2
-import color_analyzer
-import matplotlib.pyplot as plt
-import emd
 
+import color_analyzer
+import emd
 import utils
 
-colors = []
-occupy = []
 
-op = color_analyzer.analyzer('../image/test/', 100, 10)
-op.run()
+# 计算iroya浏览履历图片的颜色
+iroya = color_analyzer.analyzer('../global_images/bak/', 50, 10)
+iroya.run()
 
-Sum = 0
+# 计算pantone杂志中的颜色比例
+pantone_2015_spring = color_analyzer.analyzer('./pantone/', 50, 10)
+pantone_2015_spring.run()
 
-for k,v in op.color.items():
-    print ('%s = %d'%(k, float(v)/op.file_num))
-    Sum = Sum + (v)/op.file_num
-    c = utils.rgb2hex(k)
-    colors.append(c)
-    occupy.append(v)
-print ('sum = %d'%Sum)
-#cv2.waitKey()
-#cv2.destroyAllWindows()
-
-plt.bar(range(len(occupy)), occupy, color=list(colors))
-plt.show()
-
-emd.calc_emd(op)
+# 计算两个文件夹下图片的emd距离
+distance = emd.calc_emd(iroya.color, pantone_2015_spring.color)
+print (distance)

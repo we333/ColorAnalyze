@@ -20,3 +20,18 @@ def rgb2hex(rgbcolor):
 	else:	res = '#' + strHes
 
 	return res 
+
+def plot(obj):
+	colors = []
+	occupy = []
+
+	for k,v in obj.color.items():
+	#	print ('%s = %d'%(k, float(v)/obj.file_num))
+		c = rgb2hex(k)
+		colors.append(c)
+		occupy.append(v)
+		#cv2.waitKey()
+		#cv2.destroyAllWindows()
+
+	plt.bar(range(len(occupy)), occupy, color=list(colors))
+	plt.show()

@@ -2,8 +2,10 @@
 
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 import cv2
 import heap
+import utils
 
 class analyzer(object):
     def __init__(self, path, bin_num = 10, bin_thresh = 10):
@@ -117,41 +119,37 @@ class analyzer(object):
             cnt1,cnt2 = 50,50
             upper_str = i.upper()
 
-            enable_calc = False
-            for j in self.enable_calc_color:
-                if j in upper_str:
-                    enable_calc = True
+            enable_calc = True
 
+            if 'PANDA' in upper_str or ('BLACK' in upper_str and 'WHITE' in upper_str):
+                tmp1 = tuple((0,0,0))
+                tmp2 = tuple((250,250,250))
+                cnt1 = cnt2 = 25
+                enable_calc = False
+            elif 'BLACK' in upper_str or 'ブラック' in upper_str:
+                tmp1 = tuple((0,0,0))
+                enable_calc = False
+            elif 'WHITE' in upper_str:
+                tmp1 = tuple((250,250,250))
+                enable_calc = False
+            elif 'GRAY'in upper_str:
+                tmp1 = tuple((192,192,192))
+                enable_calc = False
+            else:
+                pass
+
+            # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
             if enable_calc == False:
-                if 'PANDA' in upper_str or ('BLACK' in upper_str and 'WHITE' in upper_str):
-                    tmp1 = tuple((0,0,0))
-                    tmp2 = tuple((250,250,250))
-                    cnt1 = cnt2 = 25
-                    print ('panda')
-                elif 'BLACK' in upper_str or 'ブラック' in upper_str:
-                    tmp1 = tuple((0,0,0))
-                    print ('black')
-                elif 'WHITE' in upper_str:
-                    tmp1 = tuple((250,250,250))
-                    print ('white')
-                elif 'GRAY'in upper_str:
-                    tmp1 = tuple((192,192,192))
-                    print ('gray')
+                if self.color.has_key(tmp1):
+                    self.color[tmp1] = self.color[tmp1] + cnt1
                 else:
-                    pass
+                    self.color[tmp1] = cnt1
 
-                # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
-                if tmp1 is not None:
-                    if self.color.has_key(tmp1):
-                        self.color[tmp1] = self.color[tmp1] + cnt1
+                if tmp2 is not None:
+                    if self.color.has_key(tmp2):
+                        self.color[tmp2] = self.color[tmp2] + cnt2
                     else:
-                        self.color[tmp1] = cnt1
-
-                    if tmp2 is not None:
-                        if self.color.has_key(tmp2):
-                            self.color[tmp2] = self.color[tmp2] + cnt2
-                        else:
-                            self.color[tmp2] = cnt2
+                        self.color[tmp2] = cnt2
             
             else:
                 # 如果颜色可分辨，则之后再分析颜色
@@ -167,8 +165,24 @@ class analyzer(object):
                 else:
                     self.color[tmp] = percent[j]
 
+    def _show_plot(self):
+        colors = []
+        occupy = []
+
+        for k,v in self.color.items():
+        #   print ('%s = %d'%(k, float(v)/obj.file_num))
+            c = utils.rgb2hex(k)
+            colors.append(c)
+            occupy.append(v)
+            #cv2.waitKey()
+            #cv2.destroyAllWindows()
+
+        plt.bar(range(len(occupy)), occupy, color=list(colors))
+        plt.show()
+
     def run(self):
         self._load_image()
         self._count_color()
+        self._show_plot()
 
  

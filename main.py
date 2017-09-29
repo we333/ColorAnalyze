@@ -8,7 +8,7 @@ import utils
 colors = []
 occupy = []
 
-op = color_analyzer.analyzer('../image/temp/', 50, 10)
+op = color_analyzer.analyzer('../image/test/', 100, 10)
 op.run()
 
 Sum = 0

@@ -7,22 +7,22 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
         <meta name="apple-itunes-app" content="app-id=975793876">
-    <link rel="canonical" href="https://iroza.jp/products/10000">
+    <link rel="canonical" href="https://iroza.jp/products/6103?psuid=0&psrid=14&pssid=000548567db44964">
     
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<meta name="description" content="色から、モノを好きになる。それがIROZAです。  IROZAでは「色」から始まるモノとの出会いをご提案しております。ファッションから雑貨まで様々なアイテムを「色」で探せるオンラインショップです。値段や流行にとらわれずに、あなたならではの価値を「色」を通じて見つけることができます。 キルティングステッチによりカジュアルな要素を取り入れながらも、スカート自体のシルエットにも拘ったブランドらしいデザインが特徴。共地のブルゾンとセットアップで着て頂いても良いですし、シンプルなトップスとの組み合わせにも使えるアイテムです。">
-    <meta name="keywords" content="キルティング スカート DEASK011 SS15 / WHITE,Dolly &amp; Molly,白,IROZA,イロザ">
+<meta name="description" content="色から、モノを好きになる。それがIROZAです。  IROZAでは「色」から始まるモノとの出会いをご提案しております。ファッションから雑貨まで様々なアイテムを「色」で探せるオンラインショップです。値段や流行にとらわれずに、あなたならではの価値を「色」を通じて見つけることができます。 岐阜は美濃の地に1300年の歴史を紡いできた美濃紙。紙の新しい形を発信し続けている古川紙工の祝儀袋です。こちらはアーティスト、ひびのこずえとのコラボレーションアイテムです。伝統的な祝の形に、バランス良く、新しいスタイルをプラスして昔の良いものを現代の人に改めて感じてもらえる様なスタイルに仕上げました。お祝いを包、名前を添え、スイートピンクの水引でキュートさをプラスした気品のある祝儀袋です。">
+    <meta name="keywords" content="POL022.祝儀袋 BRONZE,古川紙工株式会社,キラキラ,IROZA,イロザ">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@iroza_press">
-    <meta name="twitter:title" content="キルティング スカート DEASK011 SS15 / WHITE">
-    <meta name="twitter:description" content="キルティング スカート DEASK011 SS15 / WHITE | ドリーアンドモリー | 色でアイテムを探せるセレクトショップIROZA(イロザ)">
-    <meta name="twitter:image" content="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg">
+    <meta name="twitter:title" content="POL022.祝儀袋 BRONZE">
+    <meta name="twitter:description" content="POL022.祝儀袋 BRONZE | 古川紙工株式会社 | 色でアイテムを探せるセレクトショップIROZA(イロザ)">
+    <meta name="twitter:image" content="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg">
     <meta property="fb:app_id" content="610266062406029">
-    <meta property="og:url" content="https://iroza.jp/products/10000">
+    <meta property="og:url" content="https://iroza.jp/products/6103">
     <meta property="og:site_name" content="IROZA">
-    <meta property="og:image" content="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg">
-    <meta property="og:title" content="キルティング スカート DEASK011 SS15 / WHITE">
-    <meta property="og:description" content="キルティングステッチによりカジュアルな要素を取り入れながらも、スカート自体のシルエットにも拘ったブランドらしいデザインが特徴。共地のブルゾンとセットアップで着て頂いても良いですし、シンプルなトップスとの組み合わせにも使えるアイテムです。">
+    <meta property="og:image" content="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg">
+    <meta property="og:title" content="POL022.祝儀袋 BRONZE">
+    <meta property="og:description" content="岐阜は美濃の地に1300年の歴史を紡いできた美濃紙。紙の新しい形を発信し続けている古川紙工の祝儀袋です。こちらはアーティスト、ひびのこずえとのコラボレーションアイテムです。伝統的な祝の形に、バランス良く、新しいスタイルをプラスして昔の良いものを現代の人に改めて感じてもらえる様なスタイルに仕上げました。お祝いを包、名前を添え、スイートピンクの水引でキュートさをプラスした気品のある祝儀袋です。">
 
 
     
@@ -32,24 +32,24 @@
     <link rel="stylesheet" href="https://iroza.jp/css/app.min.css?v=1506611794">
     
     <link rel="stylesheet" href="https://iroza.jp/js/swiper/swiper.min.css?v=1506611794">
-    <meta name="csrf-token" content="xW1Dbg8SDl8LRC1GjM2tNluNZewOjDFxn2rXDMil">
+    <meta name="csrf-token" content="Nikja1Mr8q97mzwRQq6qwywB61vVzA5XGuQxmnlC">
 </head>
 <body>
 
     <script>
 // facebook 商品詳細トラッキング
 dataLayer = [
-  {product_name: 'キルティング スカート DEASK011 SS15 / WHITE'},
-  {product_id: 10000},
+  {product_name: 'POL022.祝儀袋 BRONZE'},
+  {product_id: 6103},
     {criteo_page_type: 'ProductPage'},
       {'ecommerce': {
         'detail': {
             'products': [{
-                'name': 'キルティング スカート DEASK011 SS15 / WHITE',         // Name or ID is required.
-                'id': 10000,
-                'price': 8532,
-                'brand': 'Dolly & Molly',
-                'category': 'スカート',
+                'name': 'POL022.祝儀袋 BRONZE',         // Name or ID is required.
+                'id': 6103,
+                'price': 648,
+                'brand': '古川紙工株式会社',
+                'category': '雑貨',
             }]
         }
     }}
@@ -57,7 +57,7 @@ dataLayer = [
 </script>
     <script>
                 dataLayer = typeof dataLayer === 'undefined' ? [] : dataLayer;
-                dataLayer.push({ 'page_virtual_path' : '/products/10000'.replace('//','/') });
+                dataLayer.push({ 'page_virtual_path' : '/products/6103?psrid=14&pssid=000548567db44964&psuid=0'.replace('//','/') });
                 dataLayer.push({'user_id': ''});
                 dataLayer.push({'criteo_email': '' });
         dataLayer.push({'criteo_site_type': 'd'});
@@ -2086,12 +2086,12 @@ var yahoo_retargeting_label = '';
 <main class="l-container-main">
 <div class="l-container-inner">
 <div itemscope itemtype="http://schema.org/Product">
-    <meta itemprop="name" content="キルティング スカート DEASK011 SS15 / WHITE" />
-    <meta itemprop="brand" content="Dolly &amp; Molly" />
-    <meta itemprop="color" content="WHITE" />
-    <meta itemprop="category" content="スカート" />
-    <meta itemprop="description" content="キルティングステッチによりカジュアルな要素を取り入れながらも、スカート自体のシルエットにも拘ったブランドらしいデザインが特徴。共地のブルゾンとセットアップで着て頂いても良いですし、シンプルなトップスとの組み合わせにも使えるアイテムです。" />
-    <meta itemprop="image" content="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg" />
+    <meta itemprop="name" content="POL022.祝儀袋 BRONZE" />
+    <meta itemprop="brand" content="古川紙工株式会社" />
+    <meta itemprop="color" content="KIRAKIRA" />
+    <meta itemprop="category" content="雑貨" />
+    <meta itemprop="description" content="岐阜は美濃の地に1300年の歴史を紡いできた美濃紙。紙の新しい形を発信し続けている古川紙工の祝儀袋です。こちらはアーティスト、ひびのこずえとのコラボレーションアイテムです。伝統的な祝の形に、バランス良く、新しいスタイルをプラスして昔の良いものを現代の人に改めて感じてもらえる様なスタイルに仕上げました。お祝いを包、名前を添え、スイートピンクの水引でキュートさをプラスした気品のある祝儀袋です。" />
+    <meta itemprop="image" content="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg" />
 </div>
 <div class="breadcrumb ">
     <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb-list">
@@ -2099,24 +2099,24 @@ var yahoo_retargeting_label = '';
             <a href="https://iroza.jp" ga-ui-observe="パンくず（トップ）をクリック"><span>IROZAトップ</span></a>
         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="https://iroza.jp/dolly-molly" ga-ui-observe="パンくずをクリック"><span>Dolly & Molly</span></a>
+                        <a href="https://iroza.jp/furukawashoten" ga-ui-observe="パンくずをクリック"><span>古川紙工株式会社</span></a>
                     </li>
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="https://iroza.jp/skirts" ga-ui-observe="パンくずをクリック"><span>スカート</span></a>
+                        <a href="https://iroza.jp/miscellaneous-goods" ga-ui-observe="パンくずをクリック"><span>雑貨</span></a>
                     </li>
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="https://iroza.jp/skirts/skirts" ga-ui-observe="パンくずをクリック"><span>スカート</span></a>
+                        <a href="https://iroza.jp/miscellaneous-goods/paper" ga-ui-observe="パンくずをクリック"><span>紙</span></a>
                     </li>
                     </ol>
 </div><div class="product-detail clearfix">
     <div class="product-detail-left">
         <div class="product-img-wrap">
             <p class="product-detail-img">
-                <a class="detail-img-wrap" href="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg">
+                <a class="detail-img-wrap" href="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg">
                     <img
                         ga-ui-observe="商品詳細の画像を拡大"
                         itemprop="image"
-                        src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg"
+                        src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg"
                         alt="image-1"
                         data-imagezoom="true"
                         data-magnification="4"
@@ -2125,16 +2125,14 @@ var yahoo_retargeting_label = '';
             </p>
             <div class="product-detail-thumbnail">
                 <ul class="product-detail-thumbnail-list clearfix">
-                                        <li><a href="#" ga-ui-observe="商品詳細サムネイルをクリック" class="jsDetailThumbnail"><img itemprop="image" src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg"></a></li>
-                                        <li><a href="#" ga-ui-observe="商品詳細サムネイルをクリック" class="jsDetailThumbnail"><img itemprop="image" src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/image/3_d296c8e7c1f97d66a4ff349f6d035c03.jpeg"></a></li>
+                                        <li><a href="#" ga-ui-observe="商品詳細サムネイルをクリック" class="jsDetailThumbnail"><img itemprop="image" src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg"></a></li>
                                     </ul>
             </div>
         </div>
         <div class="product-img-wrap-sp">
             <div class="product-slider-wrap swiper-container">
                 <ul class="produbt-slider-list swiper-wrapper">
-                                        <li class="product-detail-img swiper-slide"><span class="swiper-zoom-container"><img itemprop="image" src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg" alt="image-1" class="detail-img"></span></li>
-                                        <li class="product-detail-img swiper-slide"><span class="swiper-zoom-container"><img itemprop="image" src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/image/3_d296c8e7c1f97d66a4ff349f6d035c03.jpeg" alt="image-1" class="detail-img"></span></li>
+                                        <li class="product-detail-img swiper-slide"><span class="swiper-zoom-container"><img itemprop="image" src="https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg" alt="image-1" class="detail-img"></span></li>
                                     </ul>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
@@ -2147,44 +2145,33 @@ var yahoo_retargeting_label = '';
     <div class="product-detail-right">
         <div class="product-itemName">
             <p class="product-itemName-brandWrap">
-                <a href="https://iroza.jp/dolly-molly" ga-ui-observe="商品詳細のブランドをクリック">
-                    <span class="brand">Dolly & Molly</span>
-                                        <small class="brand-kana">（ドリーアンドモリー）</small>
+                <a href="https://iroza.jp/furukawashoten" ga-ui-observe="商品詳細のブランドをクリック">
+                    <span class="brand">古川紙工株式会社</span>
                                     </a>
             </p>
-            <p class="product-itemName-name">キルティング スカート DEASK011 SS15 / WHITE</p>
+            <p class="product-itemName-name">POL022.祝儀袋 BRONZE</p>
         </div>
         <div class="product-detail-offers">
-            <div class="product-detail-offers-price">8,532円<span>(税込)</span>
+            <div class="product-detail-offers-price">648円<span>(税込)</span>
                 <a class="product-detail-offers-heart "
                 href="javascript:void(0)"
-                onclick="togglePending(10000, this)"
+                onclick="togglePending(6103, this)"
                 ga-ui-observe="商品詳細のお気に入りを入れる"></a>
             </div>
-            <div class="product-detail-offers-point">+79 IROZA POINT</div>
+            <div class="product-detail-offers-point">+6 IROZA POINT</div>
             <div class="product-detail-offers-labels">
-                                                    <span class="detail-label">WOMEN</span>
+                                                    <span class="detail-label">UNISEX</span>
                             </div>
         </div>
         <div class="product-detail-variation">
             <ul class="product-detail-variation-list clearfix">
                                 <li>
-                    <a class="variant-btn  "
-                       data-variant="29569"
+                    <a class="variant-btn  is-selected"
+                       data-variant="30552"
                        data-variant-stock="2"
                        href="javascript: void(0);"
                        ga-ui-observe="商品詳細の商品サイズを選択"
-                       onClick="window.setCurrentVariant($(this).attr('data-variant'));">M
-                    </a>
-                                        <span>残りわずか</span>
-                                    </li>
-                                <li>
-                    <a class="variant-btn  "
-                       data-variant="29568"
-                       data-variant-stock="2"
-                       href="javascript: void(0);"
-                       ga-ui-observe="商品詳細の商品サイズを選択"
-                       onClick="window.setCurrentVariant($(this).attr('data-variant'));">S
+                       onClick="window.setCurrentVariant($(this).attr('data-variant'));">Free
                     </a>
                                         <span>残りわずか</span>
                                     </li>
@@ -2192,10 +2179,10 @@ var yahoo_retargeting_label = '';
                                 </div>
         <div class="product-detail-cart">
                         <p class="attention"></p>
-                        <a class="btn product-detail-btn btn-tocart" data-variant="0" data-product="10000" data-quantity="1" href="#"><span class="have-stock">カートに入れる</span><span class="no-stock">完売しました</span></a>
-                        <form method="POST" action="https://iroza.jp/reservation/order/pre-start" accept-charset="UTF-8" name="reserve" id="reserve"><input name="_token" type="hidden" value="xW1Dbg8SDl8LRC1GjM2tNluNZewOjDFxn2rXDMil">
+                        <a class="btn product-detail-btn btn-tocart" data-variant="0" data-product="6103" data-quantity="1" href="#"><span class="have-stock">カートに入れる</span><span class="no-stock">完売しました</span></a>
+                        <form method="POST" action="https://iroza.jp/reservation/order/pre-start" accept-charset="UTF-8" name="reserve" id="reserve"><input name="_token" type="hidden" value="Nikja1Mr8q97mzwRQq6qwywB61vVzA5XGuQxmnlC">
                 <input name="mode" type="hidden" value="reserve">
-                <input name="product_id" type="hidden" value="10000">
+                <input name="product_id" type="hidden" value="6103">
                 <input name="quantity" type="hidden" value="1">
                 <input class="reserve-variant" name="variant_id" type="hidden" value="1">
                 <button class="btn product-detail-btn btn-reserve" type="submit"><span class="have-stock">店で取り置きする</span><span class="no-stock">完売しました</span></button>
@@ -2216,11 +2203,11 @@ var yahoo_retargeting_label = '';
     <div class="product-detail-tab">
         <section tab-content="productinfo" class="product-detail-tab-content" >
             <div class="product-detail-tab-wrapper">
-                <p class="product-detail-tab-offers">キルティングステッチによりカジュアルな要素を取り入れな<a href='https://iroza.jp/gala'>がら</a>も、<a href='https://iroza.jp/skirts'>スカート</a>自体のシルエットにも拘ったブランドらしいデザインが特徴。共地の<a href='https://iroza.jp/outers'>ブルゾン</a>と<a href='https://iroza.jp/setup'>セットアップ</a>で着て頂いても良いですし、シンプルな<a href='https://iroza.jp/tops'>トップス</a>との組み合わせにも使えるアイテムです。</p>
+                <p class="product-detail-tab-offers">岐阜は美濃の地に1300年の歴史を紡いできた美濃<a href='https://iroza.jp/miscellaneous-goods'>紙</a>。紙の新しい形を発信し続けている古川紙工の祝儀袋です。こちらはアーティスト、ひびのこずえとのコラボレーションアイテムです。伝統的な祝の形に、バランス良く、新しいスタイルをプラスして昔の良いものを現代の人に改めて感じてもらえる様なスタイルに仕上げました。お祝いを包、名前を添え、スイート<a href='https://iroza.jp/pink'>ピンク</a>の水引でキュートさをプラスした気品のある祝儀袋です。</p>
                 <p class="product-detail-tab-description">状態：NEW<br>
-                性別：WOMEN<br>
-                カテゴリー：スカート<br>
-                素材：ポリウレタン 5%(表)、ポリエステル 95%(表)、ポリエステル 100%(裏)<br />
+                性別：UNISEX<br>
+                カテゴリー：紙<br>
+                
                 
                 <p class="product-detail-tab-note">税込み15,000円以上のご購入で送料無料 （通常配送料は540円） となります。配送をご希望の場合は、通常3〜5日（土日祝日は除く） 程度で発送致します。※悪天候等による交通機関の影響や、交通困難地については配送が遅れる場合があります。</p>
             </div>
@@ -2231,42 +2218,9 @@ var yahoo_retargeting_label = '';
         </section>
         
                 <section tab-content="brand" class="product-detail-tab-content product-detail-tab-brandname">
-            <div class="product-detail-title2-wrap"><h2 class="title2">Dolly & Molly</h2></div>
-            <p class="product-detail-tab-brandinfo">個性的なDollyとトレンディなMolly、2人のクローゼットをテーマにしたDolly＆Molly（ドリーアンドモリー）。ポップな色使いと独特なテキスタイルが特徴的ワンピースやスカートで、時にはやんちゃに、時にはおしとやかに楽しませてくれる、そんなブランドです。</p>
-            <p class="product-detail-tab-brandlink"><a href="https://iroza.jp/dolly-molly" class="btn">ブランドの他のアイテムを見る</a></p>
-                        <div class="product-detail-retelatedarticle">
-                <h3 class="title3">関連記事</h3>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/coachella">海外フェスがフェスコーデのお手本！コーチェラ・フェスティバル編</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/unique-t-shirt">デザインで差をつけたい人、必見！ 個性派Tシャツコレクション</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/ultrafestival">海外フェスがフェスコーデのお手本！Ultra Music Festival編</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/fashion-flab-coordinate">ファッションお悩み相談室～どうしたらいいの⁈ 夏の二の腕問題～</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/kankitsu">KANKITSU〜ビタミンチャージで夏もエネルギッシュに過ごそう〜</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/movie-amelie">映画のなかのあの服着たい！～『アメリ』編～</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/seethrough-fashion">ヘルシーな色気で視線を釘づけ！ 女度アップの“肌見せ”コーデ</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/lucky-yellow-fashion">黄色は最強カラー!? ハッピーを引き寄せるイエローコ−デ</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/white-black-coordinate">あなたはどっちで夏を楽しむ？ 「夏シロ」vs「夏クロ」スタイリングバトル！</a></div>
-                </div>
-                                <div class="product-detail-relatedarticle-box">
-                    <div class="product-detail-relatedarticle-content"><a href="https://iroza.jp/magazine/hip-cover-styleing">ファッションお悩み相談室 ～「安産型」なんて言わないで！ヒップ対策どうしてる？ ～</a></div>
-                </div>
-                            </div>
+            <div class="product-detail-title2-wrap"><h2 class="title2">古川紙工株式会社</h2></div>
+            <p class="product-detail-tab-brandinfo">古川紙工は、伝統工芸品である美濃和紙を中心とした和紙素材を利用し、オリジナル便箋、封筒、はがき（葉書）、和雑貨、を提案しています。IROZAではビビッドな色使いのノートフォルダーや、ミニマルデザインのご祝儀袋などをご提案しています。</p>
+            <p class="product-detail-tab-brandlink"><a href="https://iroza.jp/furukawashoten" class="btn">ブランドの他のアイテムを見る</a></p>
                     </section>
             </div>
 </div>
@@ -2276,7 +2230,7 @@ var yahoo_retargeting_label = '';
 </div>
 
 
-<div class="recentview-item" append-recentview-product="10000">
+<div class="recentview-item" append-recentview-product="6103">
 <h2 class="title2">最近みたアイテム</h2>
 <div class="product-listitem product-listitem-3col">
     <div class="product-listitem-box-wrap clearfix" itemscope itemtype="http://schema.org/Product">
@@ -2495,14 +2449,13 @@ Language: {
 },
 cart_url: "https://iroza.jp/cart",
 currentProductInfo: {
-    'name': 'キルティング スカート DEASK011 SS15 / WHITE',         // Name or ID is required.
-    'id': 10000,
-    'price': 7900,
-    'brand': 'Dolly & Molly',
-    'category': 'スカート',
+    'name': 'POL022.祝儀袋 BRONZE',         // Name or ID is required.
+    'id': 6103,
+    'price': 600,
+    'brand': '古川紙工株式会社',
+    'category': '雑貨',
     'variants': {
-                '29569' : 'M',
-                '29568' : 'S',
+                '30552' : 'Free',
             }
 }
 };
@@ -2515,9 +2468,9 @@ currentProductInfo: {
 $(function () {
     $('.product-detail-socialbutton-inner').popnSocialButton([  'facebook', 'twitter', 'hatebu' ], {
         url: 'https://iroza.jp'+window.location.pathname,
-        text: "キルティング スカート DEASK011 SS15 / WHITE | ドリーアンドモリー | 色でアイテムを探せるセレクトショップIROZA(イロザ)",
+        text: "POL022.祝儀袋 BRONZE | 古川紙工株式会社 | 色でアイテムを探せるセレクトショップIROZA(イロザ)",
         twitterId: 'iroza_press',
-                img: "https://monopos-images.s3-ap-northeast-1.amazonaws.com/10000/1_c24c08114ce710a57369e30c87b1915d.jpeg}",
+                img: "https://monopos-images.s3-ap-northeast-1.amazonaws.com/6103/1_383b60928e45aa74a05632451626d4fe.jpeg}",
                 imgDir: '/img/old/common/social-button',
         countPosition: {
             top: -35,

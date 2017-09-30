@@ -12,8 +12,13 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 import httplib2
 
+import urllib
+import re
+
 class Ga(object):
     def __init__(self):
+        self.token = '--'   # 分割pagePath和pageviews
+
         scope = ['https://www.googleapis.com/auth/analytics.readonly']
         discoveryURI = ('https://analyticsreporting.googleapis.com/$discovery/rest')
         email = 'miyabi@miyabi-mix.iam.gserviceaccount.com'
@@ -59,7 +64,7 @@ class Ga(object):
                         for header, dimension in zip(dimensionHeaders, dimensions):
                             if '/products/' in dimension:
                                 is_product = True
-                                f.write('https://iroza.jp' + dimension +'--')
+                                f.write('https://iroza.jp' + dimension + self.token)
                         if is_product == True:
                             is_product = False 
                             for i, values in enumerate(dateRangeValues):
@@ -70,7 +75,7 @@ class Ga(object):
         else:
             print('No results found')
 
-    def change_date_format(self, month, day):
+    def _change_date_format(self, month, day):
         if day < 10:
             str_day = '0'+str(day)
         else:
@@ -99,24 +104,53 @@ class Ga(object):
             today = i
             tomorrow = i+1
 
-            str_today = self.change_date_format(month, today)
-            str_tomorrow = self.change_date_format(month, tomorrow)
+            str_today = self._change_date_format(month, today)
+            str_tomorrow = self._change_date_format(month, tomorrow)
             print ('%s -- %s'%(str_today, str_tomorrow))
             self.get_page_views(month, str_today, str_tomorrow)
 
     def get_page_views_year(self, year):
         for i in range(1, 13):
-            if i < 10:
-                str_month = '0' + str(i)
-            else:
-                str_month = str(i)
+            if i < 10:  str_month = '0' + str(i)
+            else:       str_month = str(i)            
             month = year + '-' + str_month
             self.get_page_views_month(month)
 
+    def _save_url(self, url):
+        page = urllib.urlopen(url)
+        html = page.read()
+        with open("temp.txt","w") as f:
+            f.write(html)
+        return html
+
+    def get_one_image_url(self, url):
+        html = self._save_url(url)
+        with open("temp.txt","r") as f:
+            while True:
+                line = f.readline()
+                if line:
+                    if 'detail-img-wrap' in line:   # 提取图片url
+                        res = line.split('href="')[1]
+                        res = res.split('"')[0]
+                        print (res)
+                        break
+                else:
+                    break
+
+    def get_month_image_url(self, month):
+        with open(month,"r") as f:
+            while True:
+                line = f.readline()
+                if line:
+                    url = line.split(self.token)[0]
+                    self.get_one_image_url(url)
+                else:
+                    break
+
 ga = Ga()
 #ga.get_page_views('2017-07', '2017-07-01', '2017-07-02')
-
-ga.get_page_views_month('2015-01')
+#ga.get_page_views_month('2015-01')
 #ga.get_page_views_year('2016')
+ga.get_month_image_url('./data/2015-04.txt')
 
 

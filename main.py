@@ -5,6 +5,7 @@ import color_analyzer
 import emd
 import utils
 
+
 # 计算iroya浏览履历图片的颜色
 iroya = color_analyzer.analyzer('../global_images/bak/', 50, 10)
 iroya.run()

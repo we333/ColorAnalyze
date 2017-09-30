@@ -112,8 +112,11 @@ class Ga(object):
                 str_month = str(i)
             month = year + '-' + str_month
             self.get_page_views_month(month)
+
 ga = Ga()
 #ga.get_page_views('2017-07', '2017-07-01', '2017-07-02')
 
 ga.get_page_views_month('2015-01')
 #ga.get_page_views_year('2016')
+
+

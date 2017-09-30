@@ -41,8 +41,6 @@ with open("temp.txt","r") as f:
 			if 'twitter:description' in line:
 				nam = line.split('content="')[1]
 				nam = nam.split(' | ドリーアンドモリー | 色でアイテムを探せるセレクトショップIROZA(イロザ)')[0]
-				print ('1111')
-				print (nam)
 		else:
 			break
 
@@ -92,18 +90,40 @@ def get_file(url):
 @data 文件内容
 '''
 def save_file(path, file_name, data):
-    if data == None:
-        return
-    
-    mkdir(path)
-    if(not path.endswith("/")):
-        path=path+"/"
+	if data == None:
+	    return
 
-    file_name = file_name.split('/')[0] + '.jpg'
-    file=open(path+file_name, "wb")
-    file.write(data)
-    file.flush()
-    file.close()
+	mkdir(path)
+	if(not path.endswith("/")):
+	    path=path+"/"
+
+	num_of_token = 0
+	f = []
+	res = ''
+	try:
+		f.append(file_name.split('/')[0])
+		num_of_token = 0
+		f.append(file_name.split('/')[1])
+		num_of_token = 1
+		f.append(file_name.split('/')[2])
+		num_of_token = 2
+		f.append(file_name.split('/')[3])
+		num_of_token = 3
+		f.append(file_name.split('/')[4])
+		num_of_token = 4
+	except:
+		pass
+	else:
+		pass
+
+	for i in range(0, num_of_token+1):
+		res += f[i]
+	res += '.jpg'
+
+	file=open(path+res, "wb")
+	file.write(data)
+	file.flush()
+	file.close()
 
 
 save_file("test/", '%s.jpg' % nam , get_file(res))

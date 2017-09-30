@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://iroza.jp/css/app.min.css?v=1506611794">
     
     <link rel="stylesheet" href="https://iroza.jp/js/swiper/swiper.min.css?v=1506611794">
-    <meta name="csrf-token" content="xW1Dbg8SDl8LRC1GjM2tNluNZewOjDFxn2rXDMil">
+    <meta name="csrf-token" content="xXKL1X9mnNWfR5QXAeuuB8rdLEd8V2agA1SFap91">
 </head>
 <body>
 
@@ -2193,7 +2193,7 @@ var yahoo_retargeting_label = '';
         <div class="product-detail-cart">
                         <p class="attention"></p>
                         <a class="btn product-detail-btn btn-tocart" data-variant="0" data-product="10000" data-quantity="1" href="#"><span class="have-stock">カートに入れる</span><span class="no-stock">完売しました</span></a>
-                        <form method="POST" action="https://iroza.jp/reservation/order/pre-start" accept-charset="UTF-8" name="reserve" id="reserve"><input name="_token" type="hidden" value="xW1Dbg8SDl8LRC1GjM2tNluNZewOjDFxn2rXDMil">
+                        <form method="POST" action="https://iroza.jp/reservation/order/pre-start" accept-charset="UTF-8" name="reserve" id="reserve"><input name="_token" type="hidden" value="xXKL1X9mnNWfR5QXAeuuB8rdLEd8V2agA1SFap91">
                 <input name="mode" type="hidden" value="reserve">
                 <input name="product_id" type="hidden" value="10000">
                 <input name="quantity" type="hidden" value="1">

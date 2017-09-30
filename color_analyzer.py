@@ -174,7 +174,7 @@ class analyzer(object):
             c = utils.rgb2hex(k)
             colors.append(c)
             occupy.append(v)
-            #cv2.waitKey()
+            cv2.waitKey()
             #cv2.destroyAllWindows()
 
         plt.bar(range(len(occupy)), occupy, color=list(colors))

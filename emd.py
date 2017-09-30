@@ -72,10 +72,12 @@ emd = _emd.emd
 from collections import namedtuple
 from math import sqrt
 
-Feature = namedtuple("Feature", ["x", "y", "z"])
+#Feature = namedtuple("Feature", ["x", "y", "z"])
+Feature = namedtuple("Feature", ["x", "y"])
 
 def distance(f1, f2):
-    return sqrt( (f1.x - f2.x)**2  + (f1.y - f2.y)**2 + (f1.z - f2.z)**2 )
+#    return sqrt( (f1.x - f2.x)**2  + (f1.y - f2.y)**2 + (f1.z - f2.z)**2 )
+    return sqrt( (f1.x - f2.x)**2  + (f1.y - f2.y)**2)
 
 def calc_emd(obj_A, obj_B):
     f1,w1 = [],[]
@@ -83,11 +85,13 @@ def calc_emd(obj_A, obj_B):
 
     for rgb, data in obj_A.items():
         r,g,b = rgb[0],rgb[1],rgb[2]
-        f1.append(Feature(r,g,b))
+    #    f1.append(Feature(r,g,b))
+        f1.append(Feature(r,g))
         w1.append(float(data)/100)
     for k, v in obj_B.items():
         r,g,b = k[0],k[1],k[2]
-        f2.append(Feature(r,g,b))
+    #    f2.append(Feature(r,g,b))
+        f2.append(Feature(r,g))
         w2.append(float(v)/100)
 
     return emd( (f1, w1), (f2, w2), distance )

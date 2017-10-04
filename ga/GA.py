@@ -76,10 +76,8 @@ class Ga(object):
             print('No results found')
 
     def _change_date_format(self, month, day):
-        if day < 10:
-            str_day = '0'+str(day)
-        else:
-            str_day = str(day)
+        if day < 10:    str_day = '0'+str(day)
+        else:           str_day = str(day)        
 
         return month + '-' + str_day
 
@@ -134,6 +132,11 @@ class Ga(object):
                         res = res.split('"')[0]
                         print (res)
                         break
+                    if 'twitter:description' in line:
+                        name = line.split('content="')[1]
+                        name = name.split(' | ドリーアンドモリー | 色でアイテムを探せるセレクトショップIROZA(イロザ)')[0]
+                        print (name)
+                    #    os.remove("temp.txt")
                 else:
                     break
 
@@ -149,7 +152,7 @@ class Ga(object):
 
 ga = Ga()
 #ga.get_page_views('2017-07', '2017-07-01', '2017-07-02')
-#ga.get_page_views_month('2015-01')
+#ga.get_page_views_month('2016-10')
 #ga.get_page_views_year('2016')
 ga.get_month_image_url('./data/2015-04.txt')
 

@@ -22,6 +22,8 @@ class analyzer(object):
         ## 所以在有如下颜色时，需要分析图片
         self.enable_calc_color = ['GREEN', 'RED', 'BLUE', 'YELLOW', 'ORANGE', 'NAVY', 'PURPLE', 'YELLOW', 'CORAL']
 
+        self.run()
+
     def _find_exist_color_top_k(self, hist ,top_k):
         tk = heap.top_k_heap(top_k)
         for i in xrange(self.bin_num):
@@ -170,15 +172,15 @@ class analyzer(object):
         occupy = []
 
         for k,v in self.color.items():
-        #   print ('%s = %d'%(k, float(v)/obj.file_num))
+            print ('%s = %d'%(k, float(v)/self.file_num))
             c = utils.rgb2hex(k)
             colors.append(c)
             occupy.append(v)
-            cv2.waitKey()
+            #cv2.waitKey()
             #cv2.destroyAllWindows()
 
-        plt.bar(range(len(occupy)), occupy, color=list(colors))
-        plt.show()
+        #plt.bar(range(len(occupy)), occupy, color=list(colors))
+        #plt.show()
 
     def run(self):
         self._load_image()

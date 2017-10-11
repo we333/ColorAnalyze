@@ -101,9 +101,10 @@ def download_image(url_file):
 						res = line.split('href="')[1]
 						res = res.split('"')[0]
 						print (res)
-					if 'twitter:description' in line:
+					if 'keywords' in line:	# html中更准确的颜色描述信息
 						nam = line.split('content="')[1]
-						nam = nam.split('|')[0]
+						nam = nam.split('"')[0]
+						print (nam)
 						os.remove("temp.txt")
 				else:
 					break

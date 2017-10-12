@@ -48,7 +48,12 @@ def get_file(url):
     except BaseException as e:
         print (e)
         return None
- 
+
+def save_url(url, saveto):
+	with open(saveto, "a") as f:
+		print ("write is %s"%url)
+		f.write(url)
+
 def save_file(path, file_name, data):
 	if data == None:
 	    return
@@ -95,20 +100,44 @@ def download_image(url_file):
 		res = ''
 		with open("temp.txt","r") as f:
 			while True:
-				line = f.readline()
-				if line:
-					if 'detail-img-wrap' in line:
-						res = line.split('href="')[1]
+				html_line = f.readline()
+				if html_line:
+					if 'detail-img-wrap' in html_line:
+						res = html_line.split('href="')[1]
 						res = res.split('"')[0]
 						print (res)
-					if 'keywords' in line:	# html中更准确的颜色描述信息
-						nam = line.split('content="')[1]
+					if 'keywords' in html_line:	# html中更准确的颜色描述信息
+						nam = html_line.split('content="')[1]
 						nam = nam.split('"')[0]
-						print (nam)
+						nam = nam.split(",IROZA,イロザ")[0]
+						num = line.split('--')[0].split('/')[-1]
+						nam = num + '--' + nam
 						os.remove("temp.txt")
 				else:
 					break
 		save_file(url_file.split('.')[0], '%s' % nam , get_file(res))
 
-download_image("2016-10.txt")
+##################################################################
+# 	
+##################################################################
+def download_test_image(url_file, category_name):
+	file = open(url_file)
+
+	for line in file:
+		sitename = line.split('--')[0]
+		html = getHtml(sitename)
+		nam = ''
+		res = ''
+		with open("temp.txt","r") as f:
+			while True:
+				html_line = f.readline()
+				if html_line:
+					if category_name in html_line:
+						name = line.split('--')[0].split('/')[-1]
+						save_url(line, "result.txt")
+						continue
+				else:
+					break
 	
+#download_test_image('2017-07.txt', 'アウター')
+download_image("result.txt")

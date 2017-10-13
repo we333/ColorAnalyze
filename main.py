@@ -6,9 +6,14 @@ import color_category
 import emd
 import utils
 
-# 计算iroya浏览履历图片的颜色
-iroya = color_analyzer.analyzer('./user_color/', 50, 10)
+'''
+case1: 无任何推荐
+case2：
+'''
 
-category = color_category.category(iroya.color)
+# 计算iroya浏览履历图片的颜色
+iroya = color_analyzer.analyzer('./images/user_color/', 50, 10)
+
+category = color_category.category()
 category.detect_category(iroya.color)
 

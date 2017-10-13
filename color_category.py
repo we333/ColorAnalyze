@@ -3,7 +3,7 @@ import sys
 import emd
 
 class category(object):
-	def __init__(self, color):
+	def __init__(self):
 		self.AbM = {}
 		self.AM = {}
 		self.BbM = {}
@@ -40,10 +40,10 @@ class category(object):
 		self.AM[tuple((255, 0,   34 ))] = 13
 		self.AM[tuple((255, 0,   0  ))] = 38
 
-		self.BbM[tuple((255, 238, 0  ))] = 8
-		self.BbM[tuple((0,   255, 255))] = 3
+#		self.BbM[tuple((255, 238, 0  ))] = 8
+#		self.BbM[tuple((0,   255, 255))] = 3
 		self.BbM[tuple((0,   255, 128))] = 20
-		self.BbM[tuple((255, 119, 0  ))] = 3
+#		self.BbM[tuple((255, 119, 0  ))] = 3
 		self.BbM[tuple((255, 153, 0  ))] = 62
 
 		self.CM[tuple((0,   255, 187))] = 15
@@ -92,8 +92,9 @@ class category(object):
 
 		for i in self.list:
 			dis = emd.calc_emd(color, i)
-			if dis < ret:
-				ret = dis
-
+			print (dis)
+			if dis < min_distance:
+				min_distance = dis
+				
 		print ("min_distance = %f"%min_distance)
 		return min_distance

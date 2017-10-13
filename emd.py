@@ -83,12 +83,14 @@ def calc_emd(obj_A, obj_B):
     f2,w2 = [],[]
 
     for rgb, data in obj_A.items():
-        r,g,b = rgb[0],rgb[1],rgb[2]
-        f1.append(Feature(r,g,b))
-        w1.append(float(data)/100)
+        if data >= 10:
+            r,g,b = rgb[0],rgb[1],rgb[2]
+            f1.append(Feature(r,g,b))
+            w1.append(float(data)/100)
     for k, v in obj_B.items():
-        r,g,b = k[0],k[1],k[2]
-        f2.append(Feature(r,g,b))
-        w2.append(float(v)/100)
+        if v >= 10:
+            r,g,b = k[0],k[1],k[2]
+            f2.append(Feature(r,g,b))
+            w2.append(float(v)/100)
 
     return emd( (f1, w1), (f2, w2), distance )

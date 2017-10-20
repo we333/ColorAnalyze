@@ -4,6 +4,8 @@ import emd
 
 class category(object):
 	def __init__(self):
+		self.result = ["AbM", "AM", "BbM", "CM", "DbM", "DM", "EbM", "EM", "FM", "GM", "HM"]
+
 		self.AbM = {}
 		self.AM = {}
 		self.BbM = {}
@@ -89,12 +91,12 @@ class category(object):
 
 	def detect_category(self, color):
 		min_distance = sys.maxint
+		ret = 0
 
-		for i in self.list:
-			dis = emd.calc_emd(color, i)
-			print (dis)
+		for i in range(len(self.list)):
+			dis = emd.calc_emd(color, self.list[i])
 			if dis < min_distance:
 				min_distance = dis
-				
-		print ("min_distance = %f"%min_distance)
-		return min_distance
+				ret = i
+
+		return min_distance, self.result[ret]

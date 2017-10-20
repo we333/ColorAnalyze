@@ -8,12 +8,13 @@ import heap
 import utils
 
 class analyzer(object):
-    def __init__(self, path, bin_num = 10, bin_thresh = 10):
+    def __init__(self, file_list, bin_num = 10, bin_thresh = 10):
         self.bin_num = bin_num          # hsv空间所能分辨的颜色种类
         self.bin_thresh = bin_thresh    # 统计时每张图中，某一颜色的self.bin_num少于多少时被忽略
         self.bin_w = 24                 # 绘制直方图的宽度
 
-        self.path = path
+        self.path = ""
+        self.file_list = file_list
         self.file_num = 0
         self.images = []
         self.color = {}
@@ -103,7 +104,13 @@ class analyzer(object):
         ## 从直方图中计算颜色比例
         return self._calc_hist(hist)    #.reshape(-1))
 
-    def _load_image(self):
+    # 直接从self.file_list里获取文件路径，并读取image
+    def _load_image_from_list(self):
+        for i in self.file_list:
+            self.images.append(cv2.imread(i))
+            self.file_num += 1
+
+    def _load_image_from_path(self):
         files = []
         if os.path.isdir(self.path):
             for _,_,f in os.walk(self.path):
@@ -183,8 +190,8 @@ class analyzer(object):
         #plt.show()
 
     def run(self):
-        self._load_image()
+        self._load_image_from_list()
         self._count_color()
-        self._show_plot()
+    #    self._show_plot()
 
  

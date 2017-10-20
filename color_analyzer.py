@@ -57,7 +57,7 @@ class analyzer(object):
         
     def _calc_hist(self, hist):
         img = self._draw_hist(hist)
-        cv2.imshow('hist', img)
+    #    cv2.imshow('hist', img)
 
     ############## 找出最大的几个颜色的rgb以及比例 ##############
     ## 先抽取hist中出现最多的几个bin
@@ -95,7 +95,7 @@ class analyzer(object):
 
     def _calc_color(self, image):   
         image,mask = self._extract_object_area(image)
-        cv2.imshow('object', image)
+    #    cv2.imshow('object', image)
         ## 计算hsv空间的直方图
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         hist = cv2.calcHist( [hsv], [0], mask, [self.bin_num], [0, 180] )

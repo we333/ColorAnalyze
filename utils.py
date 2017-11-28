@@ -35,15 +35,3 @@ def plot(obj):
 
 	plt.bar(range(len(occupy)), occupy, color=list(colors))
 	plt.show()
-
-
-#coding:utf-8
-from googletrans import Translator
-
-class trans(object):
-	def __init__(self):
-		self.translator = Translator()
-		
-	def run(text):
-		result = self.translator.translate(text,dest='en')
-		return result.text

@@ -154,6 +154,6 @@ ga = Ga()
 #ga.get_page_views('2017-07', '2017-07-01', '2017-07-02')
 #ga.get_page_views_month('2016-10')
 #ga.get_page_views_year('2016')
-ga.get_month_image_url('./data/2015-04.txt')
+ga.get_month_image_url('./data/2017-09.txt')
 
 

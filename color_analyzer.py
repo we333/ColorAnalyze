@@ -8,12 +8,12 @@ import heap
 import utils
 
 class analyzer(object):
-    def __init__(self, file_list, bin_num = 10, bin_thresh = 10):
+    def __init__(self, file_list, file_path, bin_num = 10, bin_thresh = 10):
         self.bin_num = bin_num          # hsv空间所能分辨的颜色种类
         self.bin_thresh = bin_thresh    # 统计时每张图中，某一颜色的self.bin_num少于多少时被忽略
         self.bin_w = 24                 # 绘制直方图的宽度
 
-        self.path = ""
+        self.path = file_path
         self.file_list = file_list
         self.file_num = 0
         self.images = []
@@ -57,7 +57,7 @@ class analyzer(object):
         
     def _calc_hist(self, hist):
         img = self._draw_hist(hist)
-    #    cv2.imshow('hist', img)
+    #    cv2.imshow('rgb', img)
 
     ############## 找出最大的几个颜色的rgb以及比例 ##############
     ## 先抽取hist中出现最多的几个bin
@@ -99,6 +99,7 @@ class analyzer(object):
         ## 计算hsv空间的直方图
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         hist = cv2.calcHist( [hsv], [0], mask, [self.bin_num], [0, 180] )
+     #   cv2.imshow('hsv', hist)
         cv2.normalize(hist, hist, 0, 255, cv2.NORM_MINMAX)      # 每张图的像素不一样，需要正则化
 
         ## 从直方图中计算颜色比例
@@ -107,7 +108,46 @@ class analyzer(object):
     # 直接从self.file_list里获取文件路径，并读取image
     def _load_image_from_list(self):
         for i in self.file_list:
-            self.images.append(cv2.imread(i))
+            print i
+            tmp1,tmp2 = None, None
+            cnt1,cnt2 = 50,50
+            upper_str = i.upper()
+
+            enable_calc = True
+
+            if 'PANDA' in upper_str or ('BLACK' in upper_str and 'WHITE' in upper_str):
+                tmp1 = tuple((0,0,0))
+                tmp2 = tuple((250,250,250))
+                cnt1 = cnt2 = 25
+                enable_calc = False
+            elif 'BLACK' in upper_str or 'ブラック' in upper_str:
+                tmp1 = tuple((0,0,0))
+                enable_calc = False
+            elif 'WHITE' in upper_str or '白' in upper_str:
+                tmp1 = tuple((250,250,250))
+                enable_calc = False
+            elif 'GRAY'in upper_str or 'グレー' in upper_str:
+                tmp1 = tuple((192,192,192))
+                enable_calc = False
+            else:
+                pass
+
+            # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
+            if enable_calc == False:
+                if self.color.has_key(tmp1):
+                    self.color[tmp1] = self.color[tmp1] + cnt1
+                else:
+                    self.color[tmp1] = cnt1
+
+                if tmp2 is not None:
+                    if self.color.has_key(tmp2):
+                        self.color[tmp2] = self.color[tmp2] + cnt2
+                    else:
+                        self.color[tmp2] = cnt2
+
+            else:
+                self.images.append(cv2.imread(i))
+            
             self.file_num += 1
 
     def _load_image_from_path(self):
@@ -135,13 +175,13 @@ class analyzer(object):
                 tmp2 = tuple((250,250,250))
                 cnt1 = cnt2 = 25
                 enable_calc = False
-            elif 'BLACK' in upper_str or 'ブラック' in upper_str:
+            elif 'BLACK' in upper_str or 'ブラック' in upper_str:
                 tmp1 = tuple((0,0,0))
                 enable_calc = False
-            elif 'WHITE' in upper_str:
+            elif 'WHITE' in upper_str or '白' in upper_str:
                 tmp1 = tuple((250,250,250))
                 enable_calc = False
-            elif 'GRAY'in upper_str:
+            elif 'GRAY'in upper_str or 'グレー' in upper_str:
                 tmp1 = tuple((192,192,192))
                 enable_calc = False
             else:
@@ -183,15 +223,15 @@ class analyzer(object):
             c = utils.rgb2hex(k)
             colors.append(c)
             occupy.append(v)
-            #cv2.waitKey()
-            #cv2.destroyAllWindows()
+            cv2.waitKey()
+            cv2.destroyAllWindows()
 
-        #plt.bar(range(len(occupy)), occupy, color=list(colors))
-        #plt.show()
+        plt.bar(range(len(occupy)), occupy, color=list(colors))
+        plt.show()
 
     def run(self):
         self._load_image_from_list()
         self._count_color()
-    #    self._show_plot()
+     #   self._show_plot()
 
  

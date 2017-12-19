@@ -95,6 +95,7 @@ class category(object):
 
 		for i in range(len(self.list)):
 			dis = emd.calc_emd(color, self.list[i])
+		#	print ("%s --> %d"%(self.result[i], dis))
 			if dis < min_distance:
 				min_distance = dis
 				ret = i

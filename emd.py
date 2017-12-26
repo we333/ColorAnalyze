@@ -91,6 +91,4 @@ def calc_emd(obj_A, obj_B):
         f2.append(Feature(x,y))
         w2.append(float(data))
 
-    print len(xy), " --- "
-
     return emd( (f1, w1), (f2, w2), distance )

@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import cv2
 import heap
 import utils
+import cie2000
 
 class analyzer(object):
     def __init__(self, file_list, file_path, bin_num = 10, bin_thresh = 10):
@@ -17,7 +18,7 @@ class analyzer(object):
         self.file_list = file_list
         self.file_num = 0
         self.images = []
-        self.color = {}
+        self.rgb = {}
 
         ## 可能图片名中既有white也有green，导致图片没有被分析直接定义为white
         ## 所以在有如下颜色时，需要分析图片
@@ -53,8 +54,9 @@ class analyzer(object):
             h = hist[i] = int(hist[i])  # hist中的float数量变成int，便于计算
 
             cv2.rectangle(img, (i*self.bin_w+2, 255), ((i+1)*self.bin_w-2, 255-h), (int(180.0*i/self.bin_num), 255, 255), -1)
-        return cv2.cvtColor(img, cv2.COLOR_HSV2BGR)
-        
+        bgr = cv2.cvtColor(img, cv2.COLOR_HSV2BGR)
+        return bgr
+
     def _calc_hist(self, hist):
         img = self._draw_hist(hist)
     #    cv2.imshow('rgb', img)
@@ -74,7 +76,7 @@ class analyzer(object):
     ## 计算bin中各个颜色所占比例
         percent = self._calc_color_percent(color, hist[color_index])
 
-    ## 默认的rgb顺序是反的，所以需要反转一下color数据
+    ## opencv bgr to rgb
         for i in range(len(color)):
             tmp = color[i]
             first = tmp[0]
@@ -108,7 +110,6 @@ class analyzer(object):
     # 直接从self.file_list里获取文件路径，并读取image
     def _load_image_from_list(self):
         for i in self.file_list:
-            print i
             tmp1,tmp2 = None, None
             cnt1,cnt2 = 50,50
             upper_str = i.upper()
@@ -134,16 +135,16 @@ class analyzer(object):
 
             # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
             if enable_calc == False:
-                if self.color.has_key(tmp1):
-                    self.color[tmp1] = self.color[tmp1] + cnt1
+                if self.rgb.has_key(tmp1):
+                    self.rgb[tmp1] = self.rgb[tmp1] + cnt1
                 else:
-                    self.color[tmp1] = cnt1
+                    self.rgb[tmp1] = cnt1
 
                 if tmp2 is not None:
-                    if self.color.has_key(tmp2):
-                        self.color[tmp2] = self.color[tmp2] + cnt2
+                    if self.rgb.has_key(tmp2):
+                        self.rgb[tmp2] = self.rgb[tmp2] + cnt2
                     else:
-                        self.color[tmp2] = cnt2
+                        self.rgb[tmp2] = cnt2
 
             else:
                 self.images.append(cv2.imread(i))
@@ -189,16 +190,16 @@ class analyzer(object):
 
             # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
             if enable_calc == False:
-                if self.color.has_key(tmp1):
-                    self.color[tmp1] = self.color[tmp1] + cnt1
+                if self.rgb.has_key(tmp1):
+                    self.rgb[tmp1] = self.rgb[tmp1] + cnt1
                 else:
-                    self.color[tmp1] = cnt1
+                    self.rgb[tmp1] = cnt1
 
                 if tmp2 is not None:
-                    if self.color.has_key(tmp2):
-                        self.color[tmp2] = self.color[tmp2] + cnt2
+                    if self.rgb.has_key(tmp2):
+                        self.rgb[tmp2] = self.rgb[tmp2] + cnt2
                     else:
-                        self.color[tmp2] = cnt2
+                        self.rgb[tmp2] = cnt2
             
             else:
                 # 如果颜色可分辨，则之后再分析颜色
@@ -209,16 +210,16 @@ class analyzer(object):
             color, percent = self._calc_color(i)
             for j in range(len(color)):
                 tmp = tuple(color[j])
-                if self.color.has_key(tmp):
-                    self.color[tmp] = self.color[tmp] + percent[j]
+                if self.rgb.has_key(tmp):
+                    self.rgb[tmp] = self.rgb[tmp] + percent[j]
                 else:
-                    self.color[tmp] = percent[j]
+                    self.rgb[tmp] = percent[j]
 
     def _show_plot(self):
         colors = []
         occupy = []
 
-        for k,v in self.color.items():
+        for k,v in self.rgb.items():
             print ('%s = %d'%(k, float(v)/self.file_num))
             c = utils.rgb2hex(k)
             colors.append(c)

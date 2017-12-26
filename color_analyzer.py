@@ -4,7 +4,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
-import heap
 import utils
 import cie2000
 
@@ -27,7 +26,7 @@ class analyzer(object):
         self.run()
 
     def _find_exist_color_top_k(self, hist ,top_k):
-        tk = heap.top_k_heap(top_k)
+        tk = utils.top_k_heap(top_k)
         for i in xrange(self.bin_num):
             tk.push(hist[i])
         return tk.top_k()

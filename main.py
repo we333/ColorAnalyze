@@ -32,21 +32,13 @@ def color_style(q_file, ans_file, image_path):
 	
 	iroya = color_analyzer.analyzer(image_list, image_path, 50, 10)
 
-	chart = utils.create_chart(iroya.rgb)
+	wcslab = utils.calc_wcslab_cie2000('wcslab.csv')
+	hist = wcslab.create_chart(iroya.rgb)
 
-	for k, v in chart.items():
-		print k, " - > ", v
+	category = color_category.category()
+	dis, style = category.detect_category(hist)
 
-	tmp_chart = {}
-	tmp_chart[tuple((16,6))] = 5
-	print emd.calc_emd(chart, tmp_chart)
-
-	# 计算iroya与哪种调性格最接近
-#	category = color_category.category()
-
-#	dis, style = category.detect_category(iroya.rgb)
-
-#	print ("dis = %f, stype = %s"%(dis, style))
+	print ("dis = %f, stype = %s"%(dis, style))
 	# 调性格结果写入output_file
 #	f_w = open(ans_file, 'w')
 #	f_w.write(style)

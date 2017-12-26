@@ -1,5 +1,22 @@
 # -- coding: utf-8 --
 
+import heapq
+class top_k_heap(object):
+    def __init__(self, k):
+        self.k = k
+        self.data = []
+ 
+    def push(self, elem):
+        if len(self.data) < self.k:
+            heapq.heappush(self.data, elem)
+        else:
+            topk_small = self.data[0]
+            if elem > topk_small:
+                heapq.heapreplace(self.data, elem)
+ 
+    def top_k(self):
+        return [x for x in reversed([heapq.heappop(self.data) for x in xrange(len(self.data))])]
+
 def hex2rgb(hexcolor):
 	rgb = [(hexcolor >> 16) & 0xff,
 	  (hexcolor >> 8) & 0xff,
@@ -84,13 +101,13 @@ class calc_wcslab_cie2000(object):
             data = line.split(",")
             self.wl.append(data)
     
-    def get_location(self, tar_color):
+    def _get_location(self, lab_color):
         min_dis = sys.maxint
-        lab_color = LabColor(lab_l = tar_color[0], lab_a = tar_color[1], lab_b = tar_color[2])
+        lab = LabColor(lab_l = lab_color[0], lab_a = lab_color[1], lab_b = lab_color[2])
         
         for i in range(len(self.wl)):
-            tmp = LabColor(lab_l = self.wl[i][0], lab_a = self.wl[i][1], lab_b = self.wl[i][2])
-            dis = delta_e_cie2000(lab_color, tmp)
+            tmp_lab = LabColor(lab_l = self.wl[i][0], lab_a = self.wl[i][1], lab_b = self.wl[i][2])
+            dis = delta_e_cie2000(lab, tmp_lab)
             if min_dis > dis:
                 min_dis = dis
                 min_line = i
@@ -99,20 +116,17 @@ class calc_wcslab_cie2000(object):
     #    print min_chip_x,min_chip_y,min_dis,min_line
         return float(min_chip_x), float(min_chip_y)
 
-def create_chart(rgb):
-    chart = {}
-
-    wcslab = calc_wcslab_cie2000('wcslab.csv')
-    for i in rgb:
-        lab = rgb2lab(i)
-        x,y = wcslab.get_location(lab)
-        point = tuple((int(x), int(y)))
-        if chart.has_key(point):
-            chart[point] = chart[point] + 1
-        else:
-            chart[point] = 1
-
-    return chart
+    def create_chart(self, rgb):
+        chart = {}
+        for i in rgb:
+            lab = rgb2lab(i)
+            x,y = self._get_location(lab)
+            point = tuple((int(x), int(y)))
+            if chart.has_key(point):
+                chart[point] = chart[point] + 1
+            else:
+                chart[point] = 1
+        return chart
 
 def plot(obj):
 	colors = []

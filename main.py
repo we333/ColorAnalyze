@@ -37,14 +37,18 @@ def color_style(q_file, ans_file, image_path):
 	for k, v in chart.items():
 		print k, " - > ", v
 
+	tmp_chart = {}
+	tmp_chart[tuple((16,6))] = 5
+	print emd.calc_emd(chart, tmp_chart)
+
 	# 计算iroya与哪种调性格最接近
-	category = color_category.category()
+#	category = color_category.category()
 
-	dis, style = category.detect_category(iroya.rgb)
+#	dis, style = category.detect_category(iroya.rgb)
 
-	print ("dis = %f, stype = %s"%(dis, style))
+#	print ("dis = %f, stype = %s"%(dis, style))
 	# 调性格结果写入output_file
-	f_w = open(ans_file, 'w')
-	f_w.write(style)
+#	f_w = open(ans_file, 'w')
+#	f_w.write(style)
 
 color_style(sys.argv[1], sys.argv[2], sys.argv[3])

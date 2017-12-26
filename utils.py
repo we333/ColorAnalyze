@@ -121,7 +121,7 @@ class calc_wcslab_cie2000(object):
         for i in rgb:
             lab = rgb2lab(i)
             x,y = self._get_location(lab)
-            point = tuple((int(x), int(y)))
+            point = tuple((x, y))
             if chart.has_key(point):
                 chart[point] = chart[point] + 1
             else:

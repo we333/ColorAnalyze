@@ -85,10 +85,12 @@ def calc_emd(obj_A, obj_B):
     for xy, data in obj_A.items():
         x,y = xy[0],xy[1]
         f1.append(Feature(x,y))
-        w1.append(float(data)/100)
+        w1.append(float(data))
     for xy, data in obj_B.items():
         x,y = xy[0],xy[1]
         f2.append(Feature(x,y))
-        w2.append(float(data)/100)
+        w2.append(float(data))
+
+    print len(xy), " --- "
 
     return emd( (f1, w1), (f2, w2), distance )

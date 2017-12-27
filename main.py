@@ -34,8 +34,6 @@ def color_style(q_file, ans_file, image_path):
 	wcslab = utils.calc_wcslab_cie2000('wcslab.csv')
 	hist = wcslab.create_chart(iroya.rgb)
 
-
-
 	category = color_category.category()
 	dis, style = category.detect_category(hist)
 

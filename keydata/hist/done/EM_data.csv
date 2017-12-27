@@ -1,0 +1,17 @@
+self.EM[tuple((22,3))] = 0.061
+self.EM[tuple((40,3))] = 0.03
+self.EM[tuple((2,6))] = 0.03
+self.EM[tuple((18,3))] = 0.061
+self.EM[tuple((5,5))] = 0.03
+self.EM[tuple((15,2))] = 0.03
+self.EM[tuple((38,6))] = 0.03
+self.EM[tuple((36,5))] = 0.03
+self.EM[tuple((20,2))] = 0.03
+self.EM[tuple((16,3))] = 0.121
+self.EM[tuple((13,3))] = 0.03
+self.EM[tuple((37,6))] = 0.03
+self.EM[tuple((23,3))] = 0.03
+self.EM[tuple((13,2))] = 0.242
+self.EM[tuple((27,2))] = 0.03
+self.EM[tuple((12,3))] = 0.061
+self.EM[tuple((4,6))] = 0.121

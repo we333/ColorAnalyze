@@ -38,8 +38,7 @@ def color_style(q_file, ans_file, image_path):
 	dis, style = category.detect_category(hist)
 
 	print ("dis = %f, stype = %s"%(dis, style))
-	# 调性格结果写入output_file
-#	f_w = open(ans_file, 'w')
-#	f_w.write(style)
+	f_w = open(ans_file, 'w')
+	f_w.write(style)
 
 color_style(sys.argv[1], sys.argv[2], sys.argv[3])

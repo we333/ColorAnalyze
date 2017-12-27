@@ -132,8 +132,14 @@ class analyzer(object):
             else:
                 pass
 
+            for word in self.enable_calc_color:
+                if word in upper_str:
+                    print "!!!"
+                    enable_calc = True
+
             # 如果此图片是无法分辨的颜色，直接指定它的颜色和比例
             if enable_calc == False:
+                print "pass calc ......"
                 if self.rgb.has_key(tmp1):
                     self.rgb[tmp1] = self.rgb[tmp1] + cnt1
                 else:
@@ -146,6 +152,8 @@ class analyzer(object):
                         self.rgb[tmp2] = cnt2
 
             else:
+                print "calc ......"
+                print i
                 self.images.append(cv2.imread(i))
             
             self.file_num += 1

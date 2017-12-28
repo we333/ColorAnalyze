@@ -26,12 +26,13 @@ def get_image_list(q_file, ans_file, image_path):
 
 	return image_list
 
-def color_style(q_file, ans_file, image_path):
+def color_style(q_file, ans_file, image_path, wcslab_file):
 	image_list = get_image_list(q_file, ans_file, image_path)	
 	
 	iroya = color_analyzer.analyzer(image_list, image_path, 50, 10)
+	print iroya.rgb
 
-	wcslab = utils.calc_wcslab_cie2000('wcslab.csv')
+	wcslab = utils.calc_wcslab_cie2000(wcslab_file)
 	hist = wcslab.create_chart(iroya.rgb)
 
 	category = color_category.category()
@@ -41,4 +42,4 @@ def color_style(q_file, ans_file, image_path):
 	f_w = open(ans_file, 'w')
 	f_w.write(style)
 
-color_style(sys.argv[1], sys.argv[2], sys.argv[3])
+color_style(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])

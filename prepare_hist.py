@@ -1,8 +1,19 @@
 # -- coding: utf-8 --
 
+'''　
+	目的：「調性格のRGB色」を用いて、「調性格のMunsell上の座標と占有率」を計算
+	「AbM_rgb.csv」から「AbM_wcslab.csv」を取得
+	./keydata/を訪問すれば分かる
+'''
+
+import os
 import emd
 import utils
 
+'''
+	file：Munsell上の分布結果を書き込むところ
+	目的：Pathいないの各ファイル(AbM_rgb.csvなど)を読み込んで、wcslab.csvをベースにしてMunsell上の分布結果をファイルに書き込む
+'''
 def calc_one_hist(file):
 	wcslab = utils.calc_wcslab_cie2000('wcslab.csv')
 
@@ -27,9 +38,10 @@ def calc_one_hist(file):
 		d3 = str(v)
 		f_w.write(d1 + "," + d2 + "," + d3 + "\n") 
 
-
-import os
-
+'''
+	Path：「調性格のRGB色」を記録するファイルの経路
+	目的：Pathいないの各ファイル(AbM_rgb.csvなど)を読み込んで、Munsell上の分布結果をファイルに書き込む
+'''
 def calc(path):
 	for _,_,fs in os.walk(path):
 		print fs

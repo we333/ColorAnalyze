@@ -69,6 +69,10 @@ def emd(*args):
 emd = _emd.emd
 # This file is compatible with both classic and new-style classes.
 
+
+'''
+    追加コードはここからです
+'''
 from collections import namedtuple
 from math import sqrt
 
@@ -77,7 +81,12 @@ Feature = namedtuple("Feature", ["x", "y"])
 def distance(f1, f2):
 #    return sqrt( (f1.x - f2.x)**2  + (f1.y - f2.y)**2 + (f1.z - f2.z)**2 )
     return sqrt( (f1.x - f2.x)**2  + (f1.y - f2.y)**2)
-
+　
+'''
+    obj_Aとobj_BのEMD距離計算
+    f1とf2：Munsell上の各座標データ
+    w1とw2：Munsell上の各座標の占有率
+'''
 def calc_emd(obj_A, obj_B):
     f1,w1 = [],[]
     f2,w2 = [],[]

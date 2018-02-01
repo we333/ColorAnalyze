@@ -1,5 +1,9 @@
 # -*- coding:utf-8
 
+'''
+	目的：path内のすべての画像を分析して、調性格を推定。推定結果はcolor_style.csvに書き込む
+'''　
+
 import os
 
 import color_analyzer

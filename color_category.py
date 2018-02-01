@@ -2,6 +2,10 @@ import sys
 
 import emd
 
+'''
+	各調性格のMunsell上分布データを初期化
+	分布データを用いてEMD距離計算して、商品の調性格を推定
+'''
 class category(object):
 	def __init__(self):
 		self.result = ["AbM", "AM", "BbM", "BM", "CM", "DbM", "DM", "EbM", "EM", "FM", "FsM", "GM"]
@@ -33,6 +37,8 @@ class category(object):
 		self.list.append(self.FsM)
 		self.list.append(self.GM)
 
+		#　AbM調性格がMunsell上の分布、例えば座標(20,3)の占有率は3%
+		#　内容は長いから、Pythonで作成されます
 		self.AbM[tuple((20,3))] = 0.03
 		self.AbM[tuple((11,2))] = 0.03
 		self.AbM[tuple((17,3))] = 0.03
@@ -422,6 +428,10 @@ class category(object):
 		self.GM[tuple((32,8))] = 0.127
 		self.GM[tuple((27,3))] = 0.013
 
+	'''
+		color：商品のLab色
+		return：商品の調性格結果(AbM、AMなどの文字列)
+	'''
 	def detect_category(self, color):
 		min_distance = sys.maxint
 		ret = 0

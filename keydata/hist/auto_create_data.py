@@ -1,3 +1,8 @@
+'''
+	目的：各調性格に対応する色分布は多いから、自動的に下記のようなコードを作成
+	self.GM[tuple((34,7))] = 0.013
+	作成されたコードの内容は./done/に保存する
+'''
 
 def create_data(file):
 	fname = file.split("./")[-1].split("_")[0]
@@ -27,7 +32,7 @@ def auto(path):
 		for f in fs:
 			create_data(path + f)
 
-#auto('./')
+#auto('./')	#　こう呼び出すと問題が出たので、下記のように12回create_data()関数を呼び出した
 
 create_data('./AbM_wcslab.csv')
 create_data('./AM_wcslab.csv')

@@ -97,7 +97,7 @@ class analyzer(object):
     def _calc_color(self, image):   
         image,mask = self._extract_object_area(image)
     #    cv2.imshow('object', image)
-        ## 计算hsv空间的直方图
+        ## calc hist in hsv
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         hist = cv2.calcHist( [hsv], [0], mask, [self.bin_num], [0, 180] )
      #   cv2.imshow('hsv', hist)
